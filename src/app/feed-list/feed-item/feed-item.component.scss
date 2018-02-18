@@ -1,0 +1,23 @@
+.card {
+  margin: 2rem 0;
+
+  .card-header {
+    font-size: 1.5rem;
+    font-weight: 350;
+    line-height: 1.1;
+  }
+
+  .card-block {
+    padding: 1rem 0.25rem;
+  }
+
+  .tags-block{
+      padding: 1rem 1.25rem 0;
+  }
+
+  .badge {
+    &.badge-info {
+      margin: 0 0.2rem 0 0;
+    }
+  }
+}

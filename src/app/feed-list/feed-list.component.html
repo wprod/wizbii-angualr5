@@ -1,0 +1,3 @@
+<div class="container">
+  <app-feed-item *ngFor="let feed of feeds" [feed]="feed" (SendComment)="addComment($event)"></app-feed-item>
+</div>

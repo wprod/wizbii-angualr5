@@ -1,0 +1,43 @@
+<div class="card">
+  <h3 class="card-header">{{ feed.publication.poster.displayName }}</h3>
+  <div *ngIf="feed.publication.tags.length > 0;" class="tags-block">
+    <span *ngFor="let tag of feed.publication.tags" class="badge badge-info">{{ tag.name }}</span>
+  </div>
+  <div class="card-block">
+    <div class="container">
+      <div class="row">
+        <div *ngIf="feed.publication.poster_type === 'COMPANY'; then compBlock; else profBlock"></div>
+        <ng-template #compBlock>
+          <div class="col-6">
+            <img class="img-fluid rounded" [src]="feed.publication.attachment_picture" [alt]="feed.publication.attachment_title" />
+          </div>
+          <div class="col-6">
+            <p class="card-text">{{ feed.publication.content }}</p>
+          </div>
+        </ng-template>
+        <ng-template #profBlock>
+          <div class="col-3">
+            <img class="img-fluid rounded" [src]="feed.publication.profile.avatar" [alt]="feed.publication.attachment_title" />
+          </div>
+          <div class="col-9">
+            <p class="card-text">{{ feed.publication.content }}</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="list-group">
+      <app-feed-comment *ngFor="let comment of feed.publication.comments" [comment]="comment"></app-feed-comment>
+    </div>
+      <div class="form-group">
+        <label for="exampleInputFile">Your Comment :</label>
+        <input
+          class="form-control"
+          #newComment
+          (keyup.enter)="addComment(newComment.value, feed.publication._id)"
+          (blur)="addComment(newComment.value, feed.publication._id); newComment.value=''">
+      </div>
+      <button class="btn btn-primary" (click)="addComment(newComment.value, feed.publication._id)">Add Comment</button>
+  </div>
+</div>

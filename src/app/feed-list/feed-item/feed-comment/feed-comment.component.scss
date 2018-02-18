@@ -1,0 +1,19 @@
+.list-group-item {
+  margin: 0.5rem 0;
+
+  .anim {
+    height: 0;
+    animation: anim .3s ease-in-out forwards;
+  }
+
+  @keyframes anim {
+    0% {
+      opacity: 0;
+      height: 0;
+    }
+    100% {
+      opacity: 1;
+      height: 2rem;
+    }
+  }
+}
